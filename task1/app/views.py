@@ -16,6 +16,7 @@ def inflation_view(request):
                 row[ind] = '-'
             ind+=1
 
+
     context = {
             'data_inflation':reader,
                 }

@@ -22,11 +22,29 @@
         <h1 class="col s12">Инфляция в России</h1>
         <div class="col s12 m8">
         {% for data in data_inflation %}
-        <tr><td>{% for obj in data%}</td>
-          <td style="background-color:{{obj|get_color}}">
-          {{obj}}
-          </td>
-          {% endfor %}
+          {% if forloop.first %}
+          <td>{% for obj in data%}</td>
+          <td style="background-color:white">
+            {{obj}}
+              {% endfor %}
+            {% else %}
+            <tr><td>{% for obj in data%}</td>
+              {% if forloop.first %}
+                <td style="background-color:white">
+                {{obj}}
+              </td>
+              {% elif forloop.last %}
+                <td style="background-color:grey">
+                {{obj}}
+              </td>
+              {% else %}
+                <td style="background-color:{{obj|get_color}}">
+                {{obj}}
+              </td>
+
+              {% endif %}
+              {% endfor %}
+          {% endif %}
         {% endfor %}
         </div>
       </div>
